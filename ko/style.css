@@ -1,0 +1,317 @@
+/* ===== リセット & ベース ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* 韓国語フォント対応 */
+  font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 30%, #a1c4fd 70%, #c2e9fb 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* ===== 画面切り替え ===== */
+.screen {
+  display: none;
+  width: 100%;
+  max-width: 480px;
+}
+
+.screen.active {
+  display: flex;
+  justify-content: center;
+}
+
+/* ===== カード ===== */
+.card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  text-align: center;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== スタート画面 ===== */
+.title-icon {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #ff6b6b;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.05em;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #888;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.8;
+  background: #fff9c4;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* ===== ボタン ===== */
+.btn {
+  border: none;
+  border-radius: 50px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.8rem 3rem;
+  transition: transform 0.1s, box-shadow 0.1s;
+  letter-spacing: 0.05em;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff6b6b, #feca57);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ===== 問題画面 ===== */
+.progress-info {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar-outer {
+  background: #e0e0e0;
+  border-radius: 50px;
+  height: 12px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.progress-bar-inner {
+  background: linear-gradient(90deg, #43e97b, #38f9d7);
+  height: 100%;
+  border-radius: 50px;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.problem {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.problem-equal {
+  color: #888;
+}
+
+.problem-blank {
+  color: #a1c4fd;
+}
+
+/* ===== フィードバック ===== */
+.feedback {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 12px;
+  animation: popIn 0.3s ease-out;
+}
+
+.feedback.correct {
+  color: #2ecc71;
+  background: #d5f5e3;
+}
+
+.feedback.incorrect {
+  color: #e74c3c;
+  background: #fadbd8;
+}
+
+.feedback.hidden {
+  display: none;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ===== 入力エリア ===== */
+.input-area {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.answer-input {
+  font-size: 2rem;
+  font-weight: bold;
+  width: 120px;
+  padding: 0.5rem 1rem;
+  border: 3px solid #a1c4fd;
+  border-radius: 12px;
+  text-align: center;
+  outline: none;
+  color: #333;
+  transition: border-color 0.2s;
+}
+
+.answer-input:focus {
+  border-color: #ff6b6b;
+}
+
+/* スピナー非表示 */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] { -moz-appearance: textfield; }
+
+/* ===== 結果画面 ===== */
+.result-title {
+  font-size: 2rem;
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+}
+
+.score-display {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.8rem;
+}
+
+.stars {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.2em;
+}
+
+.result-message {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.mistakes-section {
+  text-align: left;
+  background: #fff3f3;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.mistakes-section.hidden {
+  display: none;
+}
+
+.mistakes-title {
+  font-size: 1rem;
+  color: #e74c3c;
+  margin-bottom: 0.8rem;
+}
+
+.mistakes-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.mistakes-list li {
+  font-size: 1rem;
+  color: #555;
+  background: white;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.mistake-problem {
+  font-weight: bold;
+  color: #333;
+}
+
+.mistake-your-answer {
+  color: #e74c3c;
+  text-decoration: line-through;
+}
+
+.mistake-correct-answer {
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+/* ===== レスポンシブ（iPad・スマートフォン対応） ===== */
+@media (max-width: 400px) {
+  .title { font-size: 2rem; }
+  .problem { font-size: 2.2rem; }
+  .btn { font-size: 1.1rem; padding: 0.7rem 2rem; }
+  .answer-input { font-size: 1.5rem; width: 90px; }
+}
+
+/* iPad縦向き最適化 */
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    padding: 2rem;
+  }
+  .card {
+    padding: 3rem 3rem;
+  }
+  .title { font-size: 3rem; }
+  .problem { font-size: 3.5rem; }
+  .btn { font-size: 1.5rem; padding: 1rem 3.5rem; }
+  .answer-input { font-size: 2.5rem; width: 150px; }
+  .feedback { font-size: 2.5rem; }
+  .score-display { font-size: 2.5rem; }
+}
