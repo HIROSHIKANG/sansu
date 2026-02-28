@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>수학 드릴</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 시작 화면 -->
+  <div id="screen-start" class="screen active">
+    <div class="card">
+      <div class="title-icon">🧮</div>
+      <h1 class="title">수학 드릴</h1>
+      <p class="subtitle">더하기·빼기 20문제</p>
+      <p class="description">
+        모두 <strong>20문제</strong> 있어요！<br>
+        답을 입력하고 「답하기」를 눌러주세요.
+      </p>
+      <button id="btn-start" class="btn btn-primary">시작하기！</button>
+    </div>
+  </div>
+
+  <!-- 문제 화면 -->
+  <div id="screen-quiz" class="screen">
+    <div class="card">
+      <div class="progress-info">
+        <span id="question-number">1 / 20 문제</span>
+      </div>
+      <div class="progress-bar-outer">
+        <div id="progress-bar" class="progress-bar-inner"></div>
+      </div>
+
+      <div id="problem-display" class="problem">
+        <span id="problem-text"></span>
+        <span class="problem-equal">＝</span>
+        <span class="problem-blank">？</span>
+      </div>
+
+      <div id="feedback" class="feedback hidden"></div>
+
+      <div class="input-area">
+        <input
+          type="number"
+          id="answer-input"
+          class="answer-input"
+          placeholder="정답"
+          inputmode="numeric"
+          min="0"
+          max="99"
+        />
+        <button id="btn-answer" class="btn btn-primary">답하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 결과 화면 -->
+  <div id="screen-result" class="screen">
+    <div class="card">
+      <div class="title-icon">🏆</div>
+      <h2 class="result-title">결과</h2>
+      <div class="score-display">
+        <span id="score-text"></span>
+      </div>
+      <div id="stars" class="stars"></div>
+      <p id="result-message" class="result-message"></p>
+
+      <div id="mistakes-section" class="mistakes-section hidden">
+        <h3 class="mistakes-title">틀린 문제</h3>
+        <ul id="mistakes-list" class="mistakes-list"></ul>
+      </div>
+
+      <button id="btn-restart" class="btn btn-primary">다시 하기</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
